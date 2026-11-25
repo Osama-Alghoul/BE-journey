@@ -13,8 +13,21 @@ let posts = [
   { id: 2, title: "P3" },
 ];
 
+// get all posts
 app.get("/api/posts", (req, res) => {
-  res.json(posts);
+  const limit = parseInt(req.query.limit);
+
+  if (!isNaN(limit) && limit >= 0) {
+    res.json(posts.slice(0, limit));
+  } else {
+    res.json(posts);
+  }
+});
+
+// get a post by ID
+app.get("/api/posts/:id", (req, res) => {
+  const post = posts.find((post) => post.id === parseInt(req.params.id));
+  res.json(post);
 });
 
 app.listen(port, () =>
