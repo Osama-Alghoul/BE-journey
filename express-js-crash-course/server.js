@@ -9,6 +9,10 @@ const __dirname = dirname(__filename);
 
 const app = express();
 
+// body parser middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 // set-up static folder
 app.use(express.static(path.join(__dirname, "public")));
 
