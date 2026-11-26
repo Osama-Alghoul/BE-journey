@@ -3,6 +3,7 @@ import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import logger from "./middleware/logger.js";
 import posts from "./routes/posts.js";
+import errorHandler from "./middleware/error.js";
 const port = process.env.PORT || 8080;
 
 const __filename = fileURLToPath(import.meta.url);
@@ -22,6 +23,9 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
 app.use("/api/posts", posts);
+
+// error handler middleware
+app.use(errorHandler);
 
 app.listen(port, () =>
   console.log(`Server is running on http://localhost:${port}`),
