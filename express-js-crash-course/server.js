@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import logger from "./middleware/logger.js";
 import posts from "./routes/posts.js";
 import errorHandler from "./middleware/error.js";
+import notFoundHandler from "./middleware/notFound.js";
 const port = process.env.PORT || 8080;
 
 const __filename = fileURLToPath(import.meta.url);
@@ -23,6 +24,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
 app.use("/api/posts", posts);
+
+app.use(notFoundHandler);
 
 // error handler middleware
 app.use(errorHandler);
