@@ -1,7 +1,7 @@
 let posts = [
-  { id: 1, title: "P1" },
-  { id: 2, title: "P2" },
-  { id: 3, title: "P3" },
+  { id: 1, title: "Post number 1" },
+  { id: 2, title: "Post number 2" },
+  { id: 3, title: "Post number 3" },
 ];
 
 export const getPosts = (req, res) => {
